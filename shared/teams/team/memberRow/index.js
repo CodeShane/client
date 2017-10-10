@@ -11,7 +11,7 @@ export type Props = {
   teamname: string,
   you: ?string,
   type: ?string,
-  onOpenProfile: (u: string) => void,
+  onClick: () => void,
 }
 
 const typeToLabel = {
@@ -29,7 +29,7 @@ const showCrown = {
 }
 
 export const TeamMemberRow = (props: Props) => {
-  const {username, onOpenProfile, you, following, type} = props
+  const {username, onClick, you, following, type} = props
   return (
     <ClickableBox
       style={{
@@ -40,7 +40,7 @@ export const TeamMemberRow = (props: Props) => {
         padding: globalMargins.tiny,
         width: '100%',
       }}
-      onClick={() => onOpenProfile(username)}
+      onClick={onClick}
     >
       <Avatar username={username} size={isMobile ? 48 : 32} />
       <Box style={{...globalStyles.flexBoxColumn, marginLeft: globalMargins.small}}>
