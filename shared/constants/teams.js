@@ -21,13 +21,15 @@ export type CreateNewTeamFromConversation = NoErrorTypedAction<
   }
 >
 
+export type TeamRoleType = 'reader' | 'writer' | 'admin' | 'owner'
+
 export type AddToTeam = NoErrorTypedAction<
   'teams:addToTeam',
   {
     name: string,
     email: string,
     username: string,
-    role: null | 'reader' | 'writer' | 'admin' | 'owner',
+    role: ?TeamRoleType,
     sendChatNotification: boolean,
   }
 >
@@ -65,7 +67,7 @@ export const ChannelInfo = I.Record({
 })
 
 export type MemberInfoRecord = KBRecord<{
-  type: null | 'reader' | 'writer' | 'admin' | 'owner',
+  type: TeamRoleType,
   username: string,
 }>
 
